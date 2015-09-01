@@ -3,9 +3,10 @@
     <div class="col-md-8">
       <div class="form-group">
         <label>Select your favorite band</label>
-        <select class="form-control" onchange={{action (mut favoriteBand) value="target.value"}}>
+        <select class="form-control" onchange={{action "setFavorite" value="target.value"}}>
+          <option value="">---</option>
           {{#each bands as |band|}}
-            <option value={{band}} selected={{eq favoriteBand band}}>{{band}}</option>
+            <option value={{band.id}} selected={{eq favoriteBand.id band.id}}>{{band.name}}</option>
           {{/each}}
         </select>
       </div>
@@ -15,7 +16,7 @@
         <strong>Selected band: </strong>
         <div>
           {{#if favoriteBand}}
-            {{favoriteBand}}
+            {{favoriteBand.name}}
           {{else}}
             None.
           {{/if}}
