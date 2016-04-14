@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <div class="form-group">
         <label>Select your favorite band</label>
-        <select class="form-control" onchange={{action "setFavorite" value="target.value"}}>
+        <select class="form-control" onchange={{action (mut bandId) value="target.value"}}>
           <option value="">---</option>
           {{#each bands as |band|}}
             <option value={{band.id}} selected={{eq favoriteBand.id band.id}}>{{band.name}}</option>
