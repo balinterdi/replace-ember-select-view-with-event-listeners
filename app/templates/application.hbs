@@ -1,13 +1,29 @@
-{{#if favoriteBand}}
-  <h3>Favorite band: {{favoriteBand}}</h3>
-{{else}}
-  <h3>No favorite band selected yet.</h3>
-{{/if}}
+<div class="container outer-wrapper">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <label>Select your favorite band</label>
+        <select class="form-control" onchange={{action (mut favoriteBand) value="target.value"}}>
+          {{#each bands as |band|}}
+            <option value={{band}} selected={{eq favoriteBand band}}>{{band}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div>
+        <strong>Selected band: </strong>
+        <div>
+          {{#if favoriteBand}}
+            {{favoriteBand}}
+          {{else}}
+            None.
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{outlet}}
+</div>
 
-<select onchange={{action (mut favoriteBand) value="target.value"}}>
-  {{#each bands as |band|}}
-    <option value={{band}} selected={{eq favoriteBand band}}>{{band}}</option>
-  {{/each}}
-</select>
 
-{{outlet}}
