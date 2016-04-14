@@ -1,8 +1,12 @@
-<h3>Favorite band: {{favoriteBand.name}}</h3>
+{{#if favoriteBand}}
+  <h3>Favorite band: {{favoriteBand}}</h3>
+{{else}}
+  <h3>No favorite band selected yet.</h3>
+{{/if}}
 
-<select onchange={{action "setFavoriteBand" value="target.value"}}>
-  {{#each bands as |bandChoice|}}
-    <option value={{bandChoice.id}} selected={{eq favoriteBand.id bandChoice.id}}>{{bandChoice.name}}</option>
+<select onchange={{action (mut favoriteBand) value="target.value"}}>
+  {{#each bands as |band|}}
+    <option value={{band}} selected={{eq favoriteBand band}}>{{band}}</option>
   {{/each}}
 </select>
 
